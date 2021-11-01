@@ -43,12 +43,7 @@ void CSceneGame::Init() {
 				//37
 			}
 			else if (map[j][i] == 2) {
-				CEnemy *Enemy = new CEnemy();
-				Enemy->x = i * 100 - 350;
-				Enemy->y = j * -100 + 250;
-				//‰E‚ÖˆÚ“®
-				Enemy->mFx = 0;
-				Enemy->mFy = 1;
+			
 				/*37
 				for (int k = 0; k < 10; k++) {
 					if (!Enemy[k].mEnabled) {
@@ -66,6 +61,12 @@ void CSceneGame::Init() {
 				*/
 			}
 		}
+	CEnemy *Enemy = new CEnemy();
+				Enemy->x = 0;
+				Enemy->y = 250;
+				//‰E‚ÖˆÚ“®
+				Enemy->mFx = 0;
+				Enemy->mFy = -1;
 	}
 }
 
