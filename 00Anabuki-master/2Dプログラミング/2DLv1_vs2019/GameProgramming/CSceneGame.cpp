@@ -4,7 +4,7 @@
 //残り時間（30秒）
 int Time = 30 * 60;
 int Remain = 3;
-
+int cut = 60;
 void CSceneGame::Init() {
 	//シーンの設定
 	mScene = EGAME;
@@ -71,6 +71,18 @@ void CSceneGame::Init() {
 }
 
 void CSceneGame::Update() {
+	if (cut > 0) {
+		cut--;
+	}
+	if (cut == 0) {
+		CEnemy* Enemy = new CEnemy();
+		Enemy->x = 0;
+		Enemy->y = 250;
+		//右へ移動
+		Enemy->mFx = 0;
+		Enemy->mFy = -1;
+		cut = 60;
+	}
 	/*
 	配列の要素分繰り返す
 	配列名.size()
