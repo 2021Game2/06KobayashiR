@@ -1,5 +1,6 @@
 #include "CEnemy.h"
 #include "CTexture.h"
+#include "CText.h"
 //extern：他のソースファイルの外部変数にアクセスする宣言
 extern CTexture Texture;
 
@@ -25,7 +26,7 @@ void CEnemy::Update() {
 	else {
 		//37s
 		//弾を4発四方へ発射する
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < 1; i++) {
 			CBullet *EBullet = new CBullet();
 			//座標設定
 			EBullet->x = x;
@@ -37,9 +38,9 @@ void CEnemy::Update() {
 			EBullet->mEnabled = true;
 			EBullet->mTag = EENEMYBULLET;
 		}
-		mFireCount = 60;
-		//37e
-		/* 37
+		mFireCount = 180;
+		//
+		/* 
 		//敵弾数分繰り返し
 		for (int i = 0; i < 20; i++) {
 			//無効な弾なら発射する
@@ -129,8 +130,8 @@ bool CEnemy::Collision(const CRectangle &r) {
 		switch (r.mTag) {
 		case EBLOCK:
 			//衝突していれば反転
-			mFx *= -1;
 			mFy *= -1;
+			mEnabled = false;
 			break;
 		case EPLAYERBULLET:
 			//プレイヤーの弾に当たると、無効にする
@@ -147,7 +148,10 @@ bool CEnemy::Collision(const CRectangle &r) {
 
 void CEnemy::Render() {
 	if (mEnabled) {
+		glColor3f(1.0f,0.0f,0.0f);
 		CRectangle::Render(Texture, 146 - 16, 146 + 16, 178 + 16, 178 - 16);
+		CText::DrawChar('3', x+32, y, 16, 16);
+		glColor3f(1.0f, 1.0f, 1.0f);
 	}
 }
 

@@ -5,7 +5,7 @@ extern CTexture Texture;
 
 //デフォルトコンストラクタ
 CBullet::CBullet()
-: mFx(0), mFy(0)
+:mFx(0),mFy(0)
 {
 	mEnabled = false;
 	w = 10;	//幅設定
@@ -19,8 +19,7 @@ void CBullet::Update() {
 		//移動
 		x += mFx;
 		y += mFy;
-		if (x > 400 || x < -400 || y > 300 || y < -300)
-			mEnabled = false;
+	
 	}
 }
 
